@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="hr_exp_report_view">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+
+                <style>
+                    .table, .table td, .table th {
+                      border: 1px solid #ddd;
+                      text-align: left;
+                    }
+
+                    .table {
+                      border-collapse: collapse;
+                      width: 100%;
+                    }
+
+                    .table th, .table td {
+                      padding: 10px;
+                    }
+
+                    .employee{
+                        padding: 50px
+                    }
+                </style>
+
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <center>
+                        <b>
+                            <h3>HR Expense Report</h3>
+                        </b>
+                    </center>
+                    <center>
+                        <b>
+                            <span t-esc="start_date"/>
+                            To
+                            <span t-esc="end_date"/>
+                        </b>
+                    </center>
+                    <br/>
+                    <t t-foreach="data.keys()" t-as="employee">
+                        <br/>
+                        <center>
+                            <b  class="employee">
+                                <span>Employee :</span>
+                                <span t-esc="employee"/>
+                            </b>
+                        </center>
+                        <br/>
+
+                        <t t-set="total_sum" t-value="0"/>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Expense</th>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                </tr>
+                                <tr t-foreach="data[employee]" t-as="expense">
+                                    <td>
+                                        <span t-esc="expense[0]"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense[1]" t-options='{"widget": "date"}'/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense[2]"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense[3]"/>
+                                        <t t-set="total_sum" t-value="total_sum + expense[3]"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                    </td>
+                                    <td>
+                                        <b>Total</b>
+                                    </td>
+                                    <td>
+                                        <span t-esc="total_sum"/>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
