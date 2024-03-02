@@ -34,4 +34,4 @@ This module is licensed under the LGPL-3.
 
 ## Author
 
-This module was created by Dino Herlambang. For more information, please visit https://instagram.com/_dinoherlambang_.
+This module was created by Dino Herlambang. For more information, please visit https://www.instagram.com/_dinoherlambang_/
