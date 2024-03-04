@@ -11,6 +11,7 @@
     'license': 'LGPL-3',
     'category': 'Human Resources',
     'data':[
+        'security/ir.model.access.csv',
         'reports/hr_exp_reports.xml',
         'wizards/hr_exp_report_wizard.xml',
         'reports/hr_exp_report_view.xml',

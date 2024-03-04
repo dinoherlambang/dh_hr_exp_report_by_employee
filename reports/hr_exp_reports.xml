@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <report
-                id="action_report_by_employee"
-                string="By Employee"
-                model="hr.expense.report"
-                report_type="qweb-pdf"
-                file="hr_expense_report.hr_exp_report_view"
-                name="hr_expense_report.hr_exp_report_view"
-        />
-    </data>
+    <report 
+        id="action_report_by_employee"
+        model="hr.expense.report.wizard"
+        string="HR Expense Report by Employee"
+        report_type="qweb-pdf"
+        file="dh_hr_exp_report_by_employee.hr_exp_report_view"
+        name="dh_hr_exp_report_by_employee.hr_exp_report_view"
+        print_report_name="'HR Expense Report - %s' % object.start_date"
+    />
 </odoo>

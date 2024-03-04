@@ -3,7 +3,7 @@
 
     <record id="hr_exp_report_wizard" model="ir.ui.view">
         <field name="name">HR Expense Report</field>
-        <field name="model">hr.expense.report</field>
+        <field name="model">hr.expense.report.wizard</field>
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="HR Expense Report">
@@ -29,18 +29,15 @@
     <record id="action_hr_exp_report_wizard" model="ir.actions.act_window">
         <field name="name">HR Expense Report</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">hr.expense.report</field>
+        <field name="res_model">hr.expense.report.wizard</field>
         <field name="view_mode">form</field>
         <field name="view_id" ref="hr_exp_report_wizard"/>
         <field name="target">new</field>
     </record>
 
     <menuitem action="action_hr_exp_report_wizard"
-              id="menu_hr_exp_report_wizard"
-              parent="hr.menu_hr_report"/>
-
-    <menuitem action="action_hr_exp_report_wizard"
             id="menu_hr_exp_report_wizard"
-            parent="correct_module_name.menu_id"/>
+            parent="hr_expense.menu_hr_expense_reports"/>
+
 
 </odoo>

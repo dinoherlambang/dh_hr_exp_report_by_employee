@@ -39,52 +39,61 @@
                         </b>
                     </center>
                     <br/>
-                    <t t-foreach="data.keys()" t-as="employee">
-                        <br/>
+                    <t t-if="data">
+                        <t t-foreach="data.keys()" t-as="employee">
+                            <br/>
+                            <center>
+                                <b  class="employee">
+                                    <span>Employee :</span>
+                                    <span t-esc="employee"/>
+                                </b>
+                            </center>
+                            <br/>
+
+                            <t t-set="total_sum" t-value="0"/>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Expense</th>
+                                        <th>Date</th>
+                                        <th>Description</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                    <tr t-foreach="data[employee]" t-as="expense">
+                                        <td>
+                                            <span t-esc="expense[0]"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="expense[1]" t-options='{"widget": "date"}'/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="expense[2]"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="expense[3]"/>
+                                            <t t-set="total_sum" t-value="total_sum + expense[3]"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                        </td>
+                                        <td>
+                                            <b>Total</b>
+                                        </td>
+                                        <td>
+                                            <span t-esc="total_sum"/>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </t>
+                    </t>
+                    <t t-else="">
                         <center>
-                            <b  class="employee">
-                                <span>Employee :</span>
-                                <span t-esc="employee"/>
+                            <b>
+                                <h3>No data available</h3>
                             </b>
                         </center>
-                        <br/>
-
-                        <t t-set="total_sum" t-value="0"/>
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>Expense</th>
-                                    <th>Date</th>
-                                    <th>Description</th>
-                                    <th>Amount</th>
-                                </tr>
-                                <tr t-foreach="data[employee]" t-as="expense">
-                                    <td>
-                                        <span t-esc="expense[0]"/>
-                                    </td>
-                                    <td>
-                                        <span t-esc="expense[1]" t-options='{"widget": "date"}'/>
-                                    </td>
-                                    <td>
-                                        <span t-esc="expense[2]"/>
-                                    </td>
-                                    <td>
-                                        <span t-esc="expense[3]"/>
-                                        <t t-set="total_sum" t-value="total_sum + expense[3]"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                    </td>
-                                    <td>
-                                        <b>Total</b>
-                                    </td>
-                                    <td>
-                                        <span t-esc="total_sum"/>
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
                     </t>
                 </div>
             </t>
